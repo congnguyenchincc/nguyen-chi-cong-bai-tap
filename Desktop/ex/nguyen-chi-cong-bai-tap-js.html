@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nguyen Chi Cong Bai tap js</title>
+</head>
+<body>
+	<h1>Phan loai hoc vien theo ngon ngu lap trinh</h1>
+	<select id="className" onchange="classNam()">
+		<option>Chon lop hoc</option>
+		<option value=".net">.net</option>
+		<option value="angular">angular</option>
+		<option value="java">java</option>
+		<option value="test">test</option>
+	</select>
+	<p id="oke"></p>
+	<p>Hoc sinh</p>
+	<p id="student"></p>
+	<script type="text/javascript">
+		var students = [
+						{id: 1, name: 'tran van a', className: '.net'},
+						{id: 2, name: 'tran van b', className: '.net'},
+						{id: 3, name: 'tran van c', className: 'angular'},
+						{id: 4, name: 'tran van d', className: 'angular'},
+						{id: 5, name: 'tran van e', className: 'java'},
+						{id: 6, name: 'tran van f', className: 'java'},
+						{id: 7, name: 'tran van g', className: 'java'},
+						{id: 8, name: 'tran van h', className: 'test'},
+						{id: 9, name: 'tran van i', className: 'test'},
+						{id: 10, name: 'tran van j', className: 'test'}
+						];
+			
+		var newDiv = document.createElement("div");
+			newDiv.setAttribute("id", "newDiv");
+			document.body.appendChild(newDiv);
+
+		function classNam(){
+
+			document.getElementById("newDiv").remove();			//delete div
+
+			var newDiv = document.createElement("div");			// create new div
+				newDiv.setAttribute("id", "newDiv");
+				document.body.appendChild(newDiv);
+
+			var cl = document.getElementById("className").value;		// select value from "select" tag
+			var x = document.createElement("SELECT");					// creat "select" element
+  				x.setAttribute("id", "student_info");					// set id for the new "select"
+  				document.getElementById('newDiv').appendChild(x);		// append "select" to newDiv
+  	
+			for (var i = 0; i < students.length; i++) {					// use "for" loop to math 
+				if (cl == students[i]['className']) {					// use condition to chose
+					var z = document.createElement('option');			// create "option" element of "select" elemnt
+						z.setAttribute('value',students[i]['name']);		// set value for "option" elemnet
+					var t = document.createTextNode(students[i]['name']);	// creat text in "option" elemnet
+						z.appendChild(t);									// append 	
+						document.getElementById('student_info').appendChild(z);
+				}
+			}
+			
+		};
+	</script>
+</body>
+</html>
